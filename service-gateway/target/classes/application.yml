@@ -1,0 +1,46 @@
+
+ #configuration for enabling SSL
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-type: PKCS12
+    key-store-password: password
+    key-alias: tomcat
+    key-password: password
+
+
+spring:
+  application:
+    name: gateway-service
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+zuul:
+  prefix: /api/
+  routes:
+    read-service:
+      path: /readservice/**
+      serviceId: read-service
+    write-service:
+      path: /writeservice/**
+      serviceId: write-service
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true

@@ -1,0 +1,53 @@
+server:
+  port: 6001
+
+jasypt:
+  encryptor:
+    password: shouldusekeymanager
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+db.vitalsign.secret: ENC(PL3mj1ILOHMjUcr+9DRybg==)
+db.heartrate.secret: ENC(wUzwm5JwfshNTpAIC2ic5Q==)
+
+spring:
+  application:
+    name: write-service
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+    url: jdbc:postgresql://localhost:5432/test_db?sslmode=verify-full&ssl=true&sslrootcert=/Users/tanbirsagar/Documents/Projects/awakelabs-api-backend/read-service/src/main/resources/server.crt
+    username: ENC(VIz0pQObno3EKnxqP6nohg==)
+    password: ENC(4EP1OTFztkzyiHgJEIUakg==)
+
+  cache:
+    type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: on
+
+
+debug: false
+
+
+

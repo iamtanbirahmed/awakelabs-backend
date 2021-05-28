@@ -1,0 +1,25 @@
+#spring.application.name=backend-admin
+##spring.security.user.name=admin
+##spring.security.user.password=admin
+
+spring:
+  application:
+    name: admin-service
+  security:
+    user:
+      name: admin
+      password: admin
+  boot:
+    admin:
+      discovery:
+        ignored-services: admin-service, gateway-service
+server:
+  port: 1001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://service_registry:8761/eureka
+    registryFetchIntervalSeconds: 5
+    registerWithEureka: true
+    fetchRegistry: true
