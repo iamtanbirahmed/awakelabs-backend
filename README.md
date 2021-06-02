@@ -46,6 +46,8 @@ The whole application is `containerized` using `docker-compose`. Run the followi
 ```
 $ git clone https://github.com/iamtanbirahmed/awakelabs-backend.git
 $ cd awakelabs-backend
+$ chmod 600 server.key
+$ docker-compose build
 $ docker-compose up
 ```
 
